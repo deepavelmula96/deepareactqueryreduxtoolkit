@@ -1,0 +1,30 @@
+create react app with typescript
+and add bootstrap 5 to 
+inside the app.css remove everything
+----------------------------------------------------------------
+in index.html paste bootstrap 5 cdn css
+add before title tag
+
+----------------------------------------------------------------
+npm i @reduxjs/toolkit react-redux
+----------------------------------------------------------------
+require mock api
+mockapi.io
+deepa.innominds@gamil.com
+----------------------------------------------------------------
+https://6571c424d61ba6fcc0137e9d.mockapi.io/studentsDetails
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+Create API Slice
+----------------------------------------------------------------
+//     // it take 2 arguments
+//     // baseQuery – Here you define the base URL using fetchBaseQuery for making an HTTP request.--- it make https request
+
+// baseQuery:fetchBaseQuery("https://mockapi.io/projects/6571c424d61ba6fcc0137e9e")
+// // endpoints with name ===> endpoints===with this we make different apis
+
+----------------------------------------------------------------
+Link vs NavLink
+
+NavLink ===> it will give the active className=>isActive
