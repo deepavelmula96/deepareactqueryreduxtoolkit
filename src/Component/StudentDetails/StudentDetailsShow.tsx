@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetStudentsDetailsQuery } from '../../Slices/studentDetailsSlice'
+import { useDeleteStudentsDetailsMutation, useGetStudentsDetailsQuery } from '../../Slices/studentDetailsSlice'
 import { StudentDetailInterface } from '../../Models/StudentDetailsModel';
 import { NavLink } from 'react-router-dom';
 const StudentDetailsShow = () => {
@@ -11,6 +11,7 @@ const StudentDetailsShow = () => {
         isLoading,
     } = useGetStudentsDetailsQuery();
     console.log(students)
+    const [deleteStudentDetail]=useDeleteStudentsDetailsMutation()
     const deleteHandler = (id: string) => {
         console.log(id)
     }
@@ -28,9 +29,12 @@ const StudentDetailsShow = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{student?.studentEmail}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">{student?.studentName}</h6>
-                                    <button className="btn btn-danger" onClick={() => deleteHandler(student?.id)}>Delete</button> &nbsp;
+                                    <button className="btn btn-danger" onClick={() => deleteStudentDetail(student?.id)}>Delete</button> &nbsp;
+                                    
                                     <button className="btn btn-primary" onClick={() => deleteHandler(student?.id)}>Edit</button>
-
+                                    <button className="card-link">
+                    <NavLink to={`editstudentdetails/${student?.id}`}>Edit</NavLink>
+                  </button>
                                     {/* <NavLink to={`edit/${student?.id}`} className="btn btn-primary">Edit</NavLink> */}
                                 </div>
                             </div>

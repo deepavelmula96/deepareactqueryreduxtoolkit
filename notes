@@ -27,4 +27,49 @@ Create API Slice
 ----------------------------------------------------------------
 Link vs NavLink
 
-NavLink ===> it will give the active className=>isActive
+NavLink ===> it will give the active className=>isActive in the ClassName
+className={({ isActive }) => (isActive ? "activee" : "inactivee")}
+----------------------------------------------------------------
+in redux we have dispatch ===> to dispatch the action 
+
+-- ----------------------------------------------------------------
+----------------------------------------------------------------
+if we are taking as it is then we use ------------- query 
+if we modify the database then we use ------------- mutation 
+    ----------------------------------------------------------------
+if we read from data base ===> use query
+if we change the data base ===> use mutation
+------------------------------------------------------------------------
+automated re-fetching((cache behavior))
+create new studentsDetails
+1. when we fill the new studentsDetails 
+2. after click on create
+3. it need to navigate to new page or navigate to show the list of student details 
+4. in that time we have to do fecth call again 
+
+
+    -------- after adding new data to data base 
+    the new data is store in data base 
+    but redux dont know above that new data is added or not 
+    for that we have to do fecth call again
+
+        getApiCall only we -----------give the refetch option ==>refetch
+        -- instead of refetching we add ====tags
+---------------------------------------------   
+---------------------------------------------
+here we have to give 3 tag types
+
+tagTypes---tagTypes: ["Student"],---for basequery
+providesTags----providesTags: ["Student"],---for builder query
+invalidatesTags----invalidatesTags: ["Student"],-- for builder mutation
+
+-----------------------------------------------------------------------------------------
+tagTypes:["StudentDetailInterface"], fro multiple sclies===> include in one slice we use array of elements
+tagTypes:["StudentDetailInterface","schoolDetailsInterface"],
+----------------------------------------------------------------------------------------
+for edit same component we use , which we used for the create
+but path is different from create
+
+
+
+

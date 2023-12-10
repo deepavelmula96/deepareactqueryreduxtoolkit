@@ -4,7 +4,7 @@ import StudentDetailsShow from './Component/StudentDetails/StudentDetailsShow'
 import { Provider } from "react-redux";
 import Header from "./Component/Header/Header";
 import { store } from "./Store/Store";
-import CreateStudentDetails from "./Component/StudentDetails/CreateStudentDetails";
+import CreateEditStudentDetails from "./Component/StudentDetails/CreateEditStudentDetails";
 
 export const router = createBrowserRouter([
   {
@@ -17,13 +17,13 @@ export const router = createBrowserRouter([
         ,
       },
       {
-        path: "/createstudentdetails",
-        element: <CreateStudentDetails />,
+        path: "/creatstudentdetails",
+        element: <CreateEditStudentDetails />,
       },
-      // {
-      //   path: "/edit/:id",
-      //   element: <AddEdit />,
-      // },
+      {
+        path: "/editstudentdetails/:id",
+        element: <CreateEditStudentDetails />,
+      },
     ],
   },
 ]);

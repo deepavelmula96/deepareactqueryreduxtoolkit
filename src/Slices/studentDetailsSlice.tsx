@@ -14,11 +14,43 @@ export const studentDetailsApi = createApi({
     //   headers.set("Access-Control-Allow-Headers", "*");
     // },
   }),
+  tagTypes:["StudentDetailInterface"],
   endpoints: (builder) =>({
+    // getStudentDetails==> this endpoint is for the read data
     getStudentsDetails: builder.query<StudentDetailInterface[], void>({
+      // <first_one_is_what_response_we_are_getting_from_database, second_is_for_what_type_we_are_sending_to_database>
+      // <response_type, request_type(payload_type)>
         query: () => "/studentsDetails",
-      })
+        providesTags: ["StudentDetailInterface"],
+      }),
+      getStudentDetails: builder.query<StudentDetailInterface, string>({
+        query: (id) => `/studentsDetails/${id}`,
+        providesTags: ["StudentDetailInterface"],
+      }),
+    addStudentsDetails:builder.mutation<void, StudentDetailInterface>({
+      query:(student)=>({
+        url:"/studentsDetails",
+        method:"POST",
+        body:student
+      }),
+      invalidatesTags:["StudentDetailInterface"],
+    }),
+    deleteStudentsDetails: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `/studentsDetails/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["StudentDetailInterface"],
+    }),
+    updateStudentsDetails: builder.mutation<void, StudentDetailInterface>({
+      query: ({ id, ...rest }) => ({
+        url: `/studentsDetails/${id}`,
+        method: "PUT",
+        body: rest,
+      }),
+      invalidatesTags: ["StudentDetailInterface"],
+    }),
   })
 })
 
-export const { useGetStudentsDetailsQuery } = studentDetailsApi;
+export const { useGetStudentsDetailsQuery,useAddStudentsDetailsMutation,useDeleteStudentsDetailsMutation,useUpdateStudentsDetailsMutation ,useGetStudentDetailsQuery} = studentDetailsApi;
